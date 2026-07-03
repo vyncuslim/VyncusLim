@@ -311,4 +311,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    /* ==========================================================================
+       BIOGRAPHY TAB SWITCHING BEHAVIOR
+       ========================================================================== */
+    const bioTabButtons = document.querySelectorAll('.bio-tab-btn');
+    const bioContentPanes = document.querySelectorAll('.bio-content-pane');
+    
+    if (bioTabButtons.length > 0 && bioContentPanes.length > 0) {
+        bioTabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                bioTabButtons.forEach(b => b.classList.remove('active'));
+                bioContentPanes.forEach(pane => pane.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding pane
+                const tabId = btn.getAttribute('data-tab');
+                const targetPane = document.getElementById(`pane-${tabId}`);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+            });
+        });
+    }
 });

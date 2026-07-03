@@ -1472,3 +1472,254 @@ a.info-value:hover {
 .scroll-top-btn:hover i {
     transform: translateY(-2px);
 }
+
+/* ==========================================================================
+   BIOGRAPHY DETAIL PAGE
+   ========================================================================== */
+.about-detail-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.profile-sidebar-card {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 24px;
+}
+
+.sidebar-avatar-wrapper {
+    margin-bottom: 24px;
+}
+
+.sidebar-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(0, 242, 254, 0.05);
+    border: 2px solid rgba(0, 242, 254, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+    transition: transform var(--transition-medium), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.profile-sidebar-card:hover .sidebar-avatar {
+    transform: scale(1.05);
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.3);
+}
+
+.sidebar-avatar .avatar-icon {
+    width: 44px;
+    height: 44px;
+    color: var(--color-cyan);
+}
+
+.sidebar-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.sidebar-title-label {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+}
+
+.sidebar-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    margin: 20px 0;
+}
+
+.sidebar-stats {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar-stat-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.sidebar-stat-item .stat-lbl {
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-stat-item .stat-lbl i {
+    width: 16px;
+    height: 16px;
+    color: var(--color-cyan);
+}
+
+.sidebar-stat-item .stat-val {
+    color: #fff;
+    font-weight: 500;
+}
+
+.sidebar-socials {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.sidebar-social-link {
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.sidebar-social-link:hover {
+    color: var(--color-cyan);
+    transform: translateY(-2px);
+}
+
+.bio-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.bio-tabs {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 16px;
+}
+
+.bio-tab-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-secondary);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.bio-tab-btn:hover {
+    border-color: rgba(0, 242, 254, 0.4);
+    color: var(--color-cyan);
+}
+
+.bio-tab-btn.active {
+    background: rgba(0, 242, 254, 0.08);
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+
+.bio-content-pane {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.bio-content-pane.active {
+    display: block;
+}
+
+.bio-article {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+.bio-article h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.bio-article h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 40px 0 20px 0;
+    position: relative;
+    padding-left: 16px;
+}
+
+.bio-article h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 4px;
+    background: var(--color-cyan);
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--color-cyan);
+}
+
+.bio-article p {
+    margin-bottom: 20px;
+}
+
+.bio-article p strong {
+    color: #fff;
+}
+
+.bio-article ul {
+    margin: 20px 0 30px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style-type: disc;
+}
+
+.bio-article li {
+    position: relative;
+    padding-left: 4px;
+}
+
+.bio-article li strong {
+    color: #fff;
+}
+
+.bio-article .lead-text {
+    font-size: 1.15rem;
+    color: #fff;
+    line-height: 1.7;
+    background: rgba(0, 242, 254, 0.02);
+    border: 1px solid rgba(0, 242, 254, 0.1);
+    border-left: 4px solid var(--color-purple);
+    padding: 24px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.02);
+}
+
+@media (max-width: 992px) {
+    .about-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .profile-sidebar-card {
+        position: relative;
+        top: 0;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
