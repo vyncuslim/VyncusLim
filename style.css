@@ -1735,3 +1735,151 @@ a.info-value:hover {
     }
 }
 
+/* ==========================================================================
+   VITASHIELD VERIFICATION WIDGET
+   ========================================================================== */
+.vitashield-group {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.vitashield-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--border-radius-md);
+    padding: 18px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+.vitashield-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--color-purple);
+    transition: var(--transition-fast);
+}
+
+.vitashield-card.verified::before {
+    background: var(--color-cyan);
+}
+
+.vs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.vs-logo-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.vs-logo-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-purple);
+    transition: var(--transition-fast);
+}
+
+.vitashield-card.verified .vs-logo-icon {
+    color: var(--color-cyan);
+}
+
+.vs-badge {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(168, 85, 247, 0.1);
+    color: var(--color-purple);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.vitashield-card.verified .vs-badge {
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--color-cyan);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.vs-status {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+}
+
+.vs-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ff5f56;
+    display: inline-block;
+}
+
+.vs-status-dot.pulse {
+    background: #ffbd2e;
+    animation: vsDotPulse 1.5s infinite ease-in-out;
+}
+
+.vitashield-card.verified .vs-status-dot {
+    background: #27c93f;
+    box-shadow: 0 0 8px rgba(39, 201, 63, 0.8);
+}
+
+.vs-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vs-hint {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.vs-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.vs-progress {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 3px;
+    transition: width 0.1s ease-out;
+}
+
+@keyframes vsDotPulse {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+        box-shadow: 0 0 6px rgba(255, 189, 46, 0.5);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+}
+

@@ -645,6 +645,26 @@
                                 <label for="message">Message</label>
                                 <textarea id="message" name="message" required rows="5" placeholder="Write your message here..."></textarea>
                             </div>
+                            <div class="form-group vitashield-group">
+                                <div id="vitashield-widget" class="vitashield-card" data-sitekey="vs-vyncus-portfolio">
+                                    <div class="vs-header">
+                                        <div class="vs-logo-title">
+                                            <i data-lucide="shield-check" class="vs-logo-icon"></i>
+                                            <span class="vs-title">VitaShield <span class="vs-badge">Beta</span></span>
+                                        </div>
+                                        <div class="vs-status" id="vsStatus">
+                                            <span class="vs-status-dot pulse"></span> Analyzing behavior...
+                                        </div>
+                                    </div>
+                                    <div class="vs-body">
+                                        <p class="vs-hint">Move your mouse organically or interact with the form to verify humanity.</p>
+                                        <div class="vs-progress-bar">
+                                            <div class="vs-progress" id="vsProgress" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="vms-shield-token" id="vmsShieldToken" value="">
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-block">
                                 <span>Send Message</span>
                                 <i data-lucide="send"></i>

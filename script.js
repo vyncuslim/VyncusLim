@@ -221,6 +221,77 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const formFeedback = document.getElementById('formFeedback');
 
+    /* ==========================================================================
+       VITASHIELD KINETICS ENGINE
+       ========================================================================== */
+    const vsWidget = document.getElementById('vitashield-widget');
+    const vsProgress = document.getElementById('vsProgress');
+    const vsStatus = document.getElementById('vsStatus');
+    const vsTokenInput = document.getElementById('vmsShieldToken');
+    let isVsVerified = false;
+
+    if (vsWidget && vsProgress && vsStatus && vsTokenInput) {
+        let entropy = 0;
+        
+        // Track mouse movement inside the contact form container
+        const trackingArea = document.querySelector('.contact-form-container');
+        let lastX = null;
+        let lastY = null;
+        let lastTime = null;
+        
+        const updateVerification = (addedEntropy) => {
+            if (isVsVerified) return;
+            
+            entropy = Math.min(100, entropy + addedEntropy);
+            vsProgress.style.width = `${entropy}%`;
+            
+            if (entropy >= 100) {
+                isVsVerified = true;
+                vsWidget.classList.add('verified');
+                vsStatus.innerHTML = '<span class="vs-status-dot"></span> Human Verified';
+                const token = 'vms_token_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+                vsTokenInput.value = token;
+                
+                // Clear any outstanding warning in feedback
+                if (formFeedback && formFeedback.textContent.includes('VitaShield')) {
+                    formFeedback.classList.add('hidden');
+                }
+            }
+        };
+        
+        if (trackingArea) {
+            trackingArea.addEventListener('mousemove', (e) => {
+                const currentTime = Date.now();
+                if (lastX !== null && lastY !== null && lastTime !== null) {
+                    const deltaX = Math.abs(e.clientX - lastX);
+                    const deltaY = Math.abs(e.clientY - lastY);
+                    const deltaTime = currentTime - lastTime;
+                    
+                    if (deltaTime > 10) {
+                        const speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY) / deltaTime;
+                        // Award entropy for speed changes (micro-jitter kinetics simulation)
+                        if (speed > 0.05 && speed < 5) {
+                            updateVerification(0.5);
+                        }
+                    }
+                }
+                lastX = e.clientX;
+                lastY = e.clientY;
+                lastTime = currentTime;
+            });
+        }
+        
+        // Track typing interaction in form inputs
+        if (contactForm) {
+            const inputs = contactForm.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    updateVerification(3); // 3% progress per keypress interaction
+                });
+            });
+        }
+    }
+
     if (contactForm && formFeedback) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -241,6 +312,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // VitaShield security validation
+            if (!isVsVerified || !vsTokenInput.value) {
+                showFeedback('Please verify humanity using VitaShield before sending (interact with the form naturally).', 'error');
+                return;
+            }
+            
             // Simulate form submission
             submitBtn.disabled = true;
             if (submitBtnText) submitBtnText.textContent = 'Sending Message...';
@@ -253,6 +330,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Success feedback
                 showFeedback(`Thank you, ${name}! Your message has been sent successfully.`, 'success');
                 contactForm.reset();
+                
+                // Reset VitaShield widget
+                if (vsProgress) vsProgress.style.width = '0%';
+                if (vsStatus) vsStatus.innerHTML = '<span class="vs-status-dot pulse"></span> Analyzing behavior...';
+                if (vsWidget) vsWidget.classList.remove('verified');
+                if (vsTokenInput) vsTokenInput.value = '';
+                isVsVerified = false;
                 
                 // Reset button state
                 submitBtn.disabled = false;
