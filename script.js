@@ -222,131 +222,164 @@ document.addEventListener('DOMContentLoaded', () => {
     const formFeedback = document.getElementById('formFeedback');
 
     /* ==========================================================================
-       VITASHIELD KINETICS ENGINE
+       VITASHIELD KINETICS / SDK INTEGRATION
        ========================================================================== */
     const vsWidget = document.getElementById('vitashield-widget');
-    const vsProgress = document.getElementById('vsProgress');
-    const vsStatus = document.getElementById('vsStatus');
     const vsTokenInput = document.getElementById('vmsShieldToken');
     let isVsVerified = false;
 
-    if (vsWidget && vsProgress && vsStatus && vsTokenInput) {
-        let entropy = 0;
-        
-        // Track mouse movement inside the contact form container
-        const trackingArea = document.querySelector('.contact-form-container');
-        let lastX = null;
-        let lastY = null;
-        let lastTime = null;
-        
-        const updateVerification = (addedEntropy) => {
-            if (isVsVerified) return;
-            
-            entropy = Math.min(100, entropy + addedEntropy);
-            vsProgress.style.width = `${entropy}%`;
-            
-            if (entropy >= 100) {
-                isVsVerified = true;
-                vsWidget.classList.add('verified');
-                vsStatus.innerHTML = '<span class="vs-status-dot"></span> Human Verified';
-                const token = 'vms_token_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-                vsTokenInput.value = token;
-                
-                // Clear any outstanding warning in feedback
-                if (formFeedback && formFeedback.textContent.includes('VitaShield')) {
-                    formFeedback.classList.add('hidden');
-                }
+    // Check if the live VitaShield SDK has loaded successfully from the CDN
+    if (typeof window.VitaShield !== 'undefined' && vsWidget) {
+        // Initialize the live SDK from the vitashield repository behavior
+        window.VitaShield.init({
+            siteKey: 'vs-vyncus-portfolio',
+            theme: {
+                primary: '#00f2fe',
+                background: 'rgba(13, 20, 35, 0.55)',
+                text: '#94a3b8'
             }
-        };
+        });
+
+        // Listen for the live validation success custom event dispatched by the SDK widget
+        vsWidget.addEventListener('vms-verified', (e) => {
+            isVsVerified = true;
+            const token = e.detail.token;
+            if (vsTokenInput) vsTokenInput.value = token;
+            
+            // Trigger AJAX submission animation upon successful SDK verification
+            handleFormSubmission();
+        });
+    } else if (vsWidget) {
+        // Fallback: Local simulation of VitaShield kinetics (offline/development mode)
+        const vsProgress = document.getElementById('vsProgress');
+        const vsStatus = document.getElementById('vsStatus');
         
-        if (trackingArea) {
-            trackingArea.addEventListener('mousemove', (e) => {
-                const currentTime = Date.now();
-                if (lastX !== null && lastY !== null && lastTime !== null) {
-                    const deltaX = Math.abs(e.clientX - lastX);
-                    const deltaY = Math.abs(e.clientY - lastY);
-                    const deltaTime = currentTime - lastTime;
+        if (vsProgress && vsStatus && vsTokenInput) {
+            let entropy = 0;
+            
+            const updateVerification = (addedEntropy) => {
+                if (isVsVerified) return;
+                
+                entropy = Math.min(100, entropy + addedEntropy);
+                vsProgress.style.width = `${entropy}%`;
+                
+                if (entropy >= 100) {
+                    isVsVerified = true;
+                    vsWidget.querySelector('.vitashield-card')?.classList.add('verified');
+                    vsStatus.innerHTML = '<span class="vs-status-dot"></span> Human Verified';
+                    vsTokenInput.value = 'vms_fallback_token_' + Math.random().toString(36).substring(2, 15);
                     
-                    if (deltaTime > 10) {
-                        const speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY) / deltaTime;
-                        // Award entropy for speed changes (micro-jitter kinetics simulation)
-                        if (speed > 0.05 && speed < 5) {
-                            updateVerification(0.5);
-                        }
+                    if (formFeedback && formFeedback.textContent.includes('verify')) {
+                        formFeedback.classList.add('hidden');
                     }
                 }
-                lastX = e.clientX;
-                lastY = e.clientY;
-                lastTime = currentTime;
-            });
-        }
-        
-        // Track typing interaction in form inputs
-        if (contactForm) {
-            const inputs = contactForm.querySelectorAll('input, textarea');
-            inputs.forEach(input => {
-                input.addEventListener('input', () => {
-                    updateVerification(3); // 3% progress per keypress interaction
+            };
+            
+            const trackingArea = document.querySelector('.contact-form-container');
+            let lastX = null, lastY = null, lastTime = null;
+            
+            if (trackingArea) {
+                trackingArea.addEventListener('mousemove', (e) => {
+                    const currentTime = Date.now();
+                    if (lastX !== null && lastY !== null && lastTime !== null) {
+                        const deltaX = Math.abs(e.clientX - lastX);
+                        const deltaY = Math.abs(e.clientY - lastY);
+                        const deltaTime = currentTime - lastTime;
+                        
+                        if (deltaTime > 10) {
+                            const speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY) / deltaTime;
+                            if (speed > 0.05 && speed < 5) {
+                                updateVerification(0.5);
+                            }
+                        }
+                    }
+                    lastX = e.clientX;
+                    lastY = e.clientY;
+                    lastTime = currentTime;
                 });
-            });
+            }
+            
+            if (contactForm) {
+                const inputs = contactForm.querySelectorAll('input, textarea');
+                inputs.forEach(input => {
+                    input.addEventListener('input', () => {
+                        updateVerification(3);
+                    });
+                });
+            }
         }
     }
 
+    // Submit handler
     if (contactForm && formFeedback) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Gather input values
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const submitBtnText = submitBtn.querySelector('span');
-            const submitBtnIcon = submitBtn.querySelector('i');
-            
-            // Basic validation
-            if (!name || !email || !subject || !message) {
-                showFeedback('Please fill out all fields.', 'error');
+            // If using the live SDK, the SDK intercepts submit and handles validation.
+            // Only trigger manual submission check if the SDK hasn't completed or isn't loaded.
+            if (typeof window.VitaShield !== 'undefined') {
+                if (!isVsVerified) {
+                    showFeedback('Please solve the VitaShield challenge or interact with the form to verify.', 'error');
+                }
                 return;
             }
-
-            // VitaShield security validation
+            
+            // Fallback validation check
             if (!isVsVerified || !vsTokenInput.value) {
                 showFeedback('Please verify humanity using VitaShield before sending (interact with the form naturally).', 'error');
                 return;
             }
             
-            // Simulate form submission
-            submitBtn.disabled = true;
-            if (submitBtnText) submitBtnText.textContent = 'Sending Message...';
+            handleFormSubmission();
+        });
+    }
+
+    function handleFormSubmission() {
+        if (!contactForm) return;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const submitBtnText = submitBtn.querySelector('span');
+        const submitBtnIcon = submitBtn.querySelector('i');
+        
+        if (!name || !email || !subject || !message) {
+            showFeedback('Please fill out all fields.', 'error');
+            return;
+        }
+        
+        submitBtn.disabled = true;
+        if (submitBtnText) submitBtnText.textContent = 'Sending Message...';
+        if (submitBtnIcon && typeof lucide !== 'undefined') {
+            submitBtnIcon.setAttribute('data-lucide', 'loader');
+            lucide.createIcons();
+        }
+
+        setTimeout(() => {
+            showFeedback(`Thank you, ${name}! Your message has been sent successfully.`, 'success');
+            contactForm.reset();
+            
+            // Reset state
+            isVsVerified = false;
+            if (vsTokenInput) vsTokenInput.value = '';
+            
+            // Reset fallback visual elements if visible
+            const vsProgress = document.getElementById('vsProgress');
+            const vsStatus = document.getElementById('vsStatus');
+            if (vsProgress) vsProgress.style.width = '0%';
+            if (vsStatus) vsStatus.innerHTML = '<span class="vs-status-dot pulse"></span> Analyzing behavior...';
+            vsWidget.querySelector('.vitashield-card')?.classList.remove('verified');
+            
+            // Reset button
+            submitBtn.disabled = false;
+            if (submitBtnText) submitBtnText.textContent = 'Send Message';
             if (submitBtnIcon && typeof lucide !== 'undefined') {
-                submitBtnIcon.setAttribute('data-lucide', 'loader');
+                submitBtnIcon.setAttribute('data-lucide', 'send');
                 lucide.createIcons();
             }
-
-            setTimeout(() => {
-                // Success feedback
-                showFeedback(`Thank you, ${name}! Your message has been sent successfully.`, 'success');
-                contactForm.reset();
-                
-                // Reset VitaShield widget
-                if (vsProgress) vsProgress.style.width = '0%';
-                if (vsStatus) vsStatus.innerHTML = '<span class="vs-status-dot pulse"></span> Analyzing behavior...';
-                if (vsWidget) vsWidget.classList.remove('verified');
-                if (vsTokenInput) vsTokenInput.value = '';
-                isVsVerified = false;
-                
-                // Reset button state
-                submitBtn.disabled = false;
-                if (submitBtnText) submitBtnText.textContent = 'Send Message';
-                if (submitBtnIcon && typeof lucide !== 'undefined') {
-                    submitBtnIcon.setAttribute('data-lucide', 'send');
-                    lucide.createIcons();
-                }
-            }, 1800);
-        });
+        }, 1800);
     }
 
     function showFeedback(text, type) {
