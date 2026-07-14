@@ -339,6 +339,18 @@ img {
     font-weight: 700;
     color: var(--color-text-primary);
     letter-spacing: -0.03em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid rgba(0, 242, 254, 0.5);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
 }
 
 .logo-accent {
