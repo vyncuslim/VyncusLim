@@ -42,23 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       NAVBAR SCROLL EFFECT
-       ========================================================================== */
-    const navbar = document.querySelector('.navbar');
-    
-    const handleScroll = () => {
-        if (window.scrollY > 20) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        highlightActiveLink();
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial run
-
-    /* ==========================================================================
        ACTIVE LINK HIGHLIGHTING ON SCROLL
        ========================================================================== */
     const sections = document.querySelectorAll('section');
@@ -82,6 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    /* ==========================================================================
+       NAVBAR SCROLL EFFECT
+       ========================================================================== */
+    const navbar = document.querySelector('.navbar');
+    
+    const handleScroll = () => {
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        highlightActiveLink();
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial run
 
     /* ==========================================================================
        INTERSECTION OBSERVER FOR SCROLL REVEALS
