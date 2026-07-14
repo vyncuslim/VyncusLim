@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof window.VitaShield !== 'undefined' && vsWidget) {
         // Initialize the live SDK from the vitashield repository behavior
         window.VitaShield.init({
-            siteKey: 'vs-vyncus-portfolio',
+            siteKey: 'vms_pub_live_38bf8c6e2d9a10bc',
             theme: {
                 primary: '#00f2fe',
                 background: 'rgba(13, 20, 35, 0.55)',
