@@ -357,21 +357,47 @@ document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
         }
 
-        setTimeout(() => {
-            showFeedback(`Thank you, ${name}! Your message has been sent successfully.`, 'success');
-            contactForm.reset();
-            
-            // Reset state
-            isVsVerified = false;
-            if (vsTokenInput) vsTokenInput.value = '';
-            
-            // Reset fallback visual elements if visible
-            const vsProgress = document.getElementById('vsProgress');
-            const vsStatus = document.getElementById('vsStatus');
-            if (vsProgress) vsProgress.style.width = '0%';
-            if (vsStatus) vsStatus.innerHTML = '<span class="vs-status-dot pulse"></span> Analyzing behavior...';
-            vsWidget.querySelector('.vitashield-card')?.classList.remove('verified');
-            
+        // Dispatch a real AJAX post to FormSubmit
+        fetch("https://formsubmit.co/ajax/contact@sleepsomno.com", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                "_cc": "ongyuze1401@gmail.com",
+                "_subject": "New Message from Portfolio",
+                "vms-shield-token": vsTokenInput ? vsTokenInput.value : ""
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === "true" || data.success === true) {
+                showFeedback(`Thank you, ${name}! Your message has been sent successfully.`, 'success');
+                contactForm.reset();
+                
+                // Reset state
+                isVsVerified = false;
+                if (vsTokenInput) vsTokenInput.value = '';
+                
+                // Reset fallback visual elements if visible
+                const vsProgress = document.getElementById('vsProgress');
+                const vsStatus = document.getElementById('vsStatus');
+                if (vsProgress) vsProgress.style.width = '0%';
+                if (vsStatus) vsStatus.innerHTML = '<span class="vs-status-dot pulse"></span> Analyzing behavior...';
+                vsWidget.querySelector('.vitashield-card')?.classList.remove('verified');
+            } else {
+                showFeedback('Oops! Something went wrong while sending your message. Please try again.', 'error');
+            }
+        })
+        .catch(err => {
+            showFeedback('Oops! Failed to connect to email gateway. Please check your network and try again.', 'error');
+        })
+        .finally(() => {
             // Reset button
             submitBtn.disabled = false;
             if (submitBtnText) submitBtnText.textContent = 'Send Message';
@@ -379,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtnIcon.setAttribute('data-lucide', 'send');
                 lucide.createIcons();
             }
-        }, 1800);
+        });
     }
 
     function showFeedback(text, type) {
