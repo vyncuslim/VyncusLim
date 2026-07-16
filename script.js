@@ -357,22 +357,25 @@ document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
         }
 
+        // Build FormData object to trigger "simple request" and bypass CORS preflight OPTIONS check
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("subject", subject);
+        formData.append("message", message);
+        formData.append("_cc", "ongyuze1401@gmail.com");
+        formData.append("_subject", "New Message from Portfolio");
+        if (vsTokenInput && vsTokenInput.value) {
+            formData.append("vms-shield-token", vsTokenInput.value);
+        }
+
         // Dispatch a real AJAX post to FormSubmit
         fetch("https://formsubmit.co/ajax/contact@sleepsomno.com", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                subject: subject,
-                message: message,
-                "_cc": "ongyuze1401@gmail.com",
-                "_subject": "New Message from Portfolio",
-                "vms-shield-token": vsTokenInput ? vsTokenInput.value : ""
-            })
+            body: formData
         })
         .then(response => response.json())
         .then(data => {
