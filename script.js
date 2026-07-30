@@ -228,10 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const vsTokenInput = document.getElementById('vmsShieldToken');
     let isVsVerified = false;
 
-    // Check if the live VitaShield SDK has loaded successfully from the CDN
-    if (typeof window.VitaShield !== 'undefined' && vsWidget) {
-        // Initialize the live SDK from the vitashield repository behavior
-        window.VitaShield.init({
+    // Check if the live Vynalth AI Shield / VitaShield SDK has loaded successfully from the CDN
+    const shieldSDK = window.VynalthAIShield || window.VitaShield;
+    if (typeof shieldSDK !== 'undefined' && vsWidget) {
+        // Initialize the live SDK from the shield repository behavior
+        shieldSDK.init({
             siteKey: 'vms_pub_live_38bf8c6e2d9a10bc',
             theme: {
                 primary: '#00f2fe',
