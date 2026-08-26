@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05070c">
+    <meta name="color-scheme" content="dark">
     <meta name="description" content="Personal portfolio of Vyncus Lim, 12-year-old founder & CEO of Vynalth AI (formerly SomnoAI Digital Sleep Lab), student developer, and Head of IT at POWIIS MUN 2027. Specializing in AI, health tech, and web ecosystems.">
     <meta name="keywords" content="Vyncus Lim, Vynalth AI, SomnoAI, Vynalth AI Shield, POWIIS MUN, Student Developer, AI, Health Tech, Sleep Lab, sleepsomno">
     <meta name="author" content="Vyncus Lim">
@@ -27,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+    <link rel="icon" type="image/jpeg" href="assets/vynalth-symbol.jpg">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@0.344.0"></script>
@@ -84,8 +86,8 @@
     <!-- Navigation Header -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="assets/logo.jpg" alt="Vynalth AI Logo" class="logo-img">
+            <a href="#home" class="logo">
+                <span class="logo-img logo-symbol" role="img" aria-label="Vynalth AI logo"></span>
                 <span><span class="logo-accent">&lt;</span>Vynalth<span class="logo-accent">.</span>AI<span class="logo-accent"> /&gt;</span></span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -96,7 +98,10 @@
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#ecosystem" class="nav-link">Ecosystem</a></li>
+                    <li><a href="#systems" class="nav-link">Systems</a></li>
+                    <li><a href="#activity" class="nav-link">Activity</a></li>
+                    <li><a href="#experience" class="nav-link">Timeline</a></li>
                     <li><a href="certificates.html" class="nav-link">Certifications</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -117,7 +122,7 @@
                         Building the Future of <span class="gradient-text text-glow">Health Tech</span> & <span class="gradient-text text-glow-alt">AI Systems</span>
                     </h1>
                     <p class="hero-description">
-                        Hi, I'm <strong>Vyncus Lim</strong>. I am a 12-year-old student developer, AI researcher, and the founder & CEO of <strong>VitaMind AI</strong>. Currently in Year 7 at POWIIS Balik Pulau, I build privacy-first, intelligent health platforms, and design modern digital systems to solve real-world problems.
+                        Hi, I'm <strong>Vyncus Lim</strong>. I am a 12-year-old student developer, AI researcher, and the founder & CEO of <strong>Vynalth AI</strong>. Currently in Year 7 at POWIIS Balik Pulau, I build privacy-first, intelligent health platforms, and design modern digital systems to solve real-world problems.
                     </p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn btn-primary">
@@ -128,6 +133,37 @@
                             <span>Get In Touch</span>
                         </a>
                     </div>
+                </div>
+
+                <div class="hero-visual" aria-label="Vynalth AI systems preview">
+                    <div class="hero-visual-orbit orbit-a"></div>
+                    <div class="hero-visual-orbit orbit-b"></div>
+                    <div class="system-card card">
+                        <div class="system-card-topline">
+                            <span class="eyebrow"><span class="status-pulse"></span> VYNALTH / SYSTEMS</span>
+                            <span class="system-code">01—05</span>
+                        </div>
+                        <div class="system-card-main">
+                            <div class="system-ring">
+                                <div class="system-ring-core"><i data-lucide="shield-check"></i></div>
+                            </div>
+                            <div class="system-readout">
+                                <span class="readout-label">CURRENT SIGNAL</span>
+                                <strong>Human-centered intelligence</strong>
+                                <span class="readout-meta">AI / HEALTH / SECURITY</span>
+                            </div>
+                        </div>
+                        <div class="system-wave" aria-hidden="true">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="system-metrics">
+                            <div><span>UPTIME</span><strong>99.9%</strong></div>
+                            <div><span>FOCUS</span><strong>PRIVACY</strong></div>
+                            <div><span>MODE</span><strong>BUILDING</strong></div>
+                        </div>
+                    </div>
+                    <div class="hero-float-note note-top"><span class="note-dot cyan"></span> Signal integrity online</div>
+                    <div class="hero-float-note note-bottom"><span class="note-dot purple"></span> Built with curiosity</div>
                 </div>
             </div>
             <div class="scroll-down">
@@ -183,7 +219,7 @@
                             </div>
                             <div class="stat-info">
                                 <span class="stat-num">Founder & CEO</span>
-                                <span class="stat-label">VitaMind AI</span>
+                                <span class="stat-label">Vynalth AI</span>
                             </div>
                         </div>
 
@@ -211,6 +247,123 @@
             </div>
         </section>
 
+        <!-- Interactive Ecosystem Section -->
+        <section id="ecosystem" class="ecosystem section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-eyebrow"><span class="eyebrow-line"></span> Personal Identity System / 01</span>
+                    <h2 class="section-title">One founder.<br><span class="gradient-text">A living ecosystem.</span></h2>
+                    <div class="section-underline"></div>
+                    <p class="section-subtitle">Vyncus Lim is building a connected set of systems across health AI, security infrastructure, agents, and human-centered technology.</p>
+                </div>
+
+                <div class="ecosystem-layout">
+                    <div class="ecosystem-map card" aria-label="Interactive Vynalth AI ecosystem map">
+                        <div class="ecosystem-map-topline">
+                            <span class="eyebrow"><span class="status-pulse"></span> ECOSYSTEM / LIVE VIEW</span>
+                            <span class="system-code">MOVE TO EXPLORE</span>
+                        </div>
+                        <div class="ecosystem-canvas">
+                            <svg class="ecosystem-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                                <path d="M50 50 L18 21"></path>
+                                <path d="M50 50 L82 20"></path>
+                                <path d="M50 50 L15 79"></path>
+                                <path d="M50 50 L84 78"></path>
+                                <path d="M50 50 L50 10"></path>
+                            </svg>
+                            <div class="ecosystem-core">
+                                <span class="core-ring"></span>
+                                <span class="core-monogram">VL</span>
+                                <strong>Vyncus Lim</strong>
+                                <small>FOUNDER / BUILDER</small>
+                            </div>
+                            <button class="ecosystem-node node-vynalth" type="button" data-ecosystem-key="vynalth" aria-controls="ecosystemDetail">
+                                <span class="node-icon"><img src="assets/vynalth-symbol.jpg" alt=""></span>
+                                <span><strong>Vynalth AI</strong><small>Health intelligence · active</small></span>
+                            </button>
+                            <button class="ecosystem-node node-shield" type="button" data-ecosystem-key="shield" aria-controls="ecosystemDetail">
+                                <span class="node-icon shield"><img src="assets/vynalth-shield-mark.jpg" alt=""></span>
+                                <span><strong>AI Shield</strong><small>Trust layer · active</small></span>
+                            </button>
+                            <button class="ecosystem-node node-navigator" type="button" data-ecosystem-key="navigator" aria-controls="ecosystemDetail">
+                                <span class="node-icon"><i data-lucide="compass"></i></span>
+                                <span><strong>Navigator</strong><small>Web agent · developing</small></span>
+                            </button>
+                            <button class="ecosystem-node node-pedia" type="button" data-ecosystem-key="pedia" aria-controls="ecosystemDetail">
+                                <span class="node-icon"><i data-lucide="library"></i></span>
+                                <span><strong>Pedia</strong><small>Knowledge layer · planned</small></span>
+                            </button>
+                            <button class="ecosystem-node node-vynova" type="button" data-ecosystem-key="vynova" aria-controls="ecosystemDetail">
+                                <span class="node-icon"><i data-lucide="heart-pulse"></i></span>
+                                <span><strong>Vynova</strong><small>Health AI · beta</small></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <aside class="ecosystem-detail card" id="ecosystemDetail" aria-live="polite">
+                        <span class="detail-kicker" id="ecosystemDetailKicker">SELECTED SYSTEM / 01</span>
+                        <h3 id="ecosystemDetailTitle">Vynalth AI</h3>
+                        <p id="ecosystemDetailDescription">A privacy-first health intelligence platform evolving from sleep analytics into a broader human-centered AI system.</p>
+                        <div class="detail-divider"></div>
+                        <div class="detail-meta"><span>STATUS</span><strong id="ecosystemDetailStatus">ACTIVE</strong></div>
+                        <div class="detail-meta"><span>DOMAIN</span><strong id="ecosystemDetailDomain">Health AI</strong></div>
+                        <div class="detail-prompt"><span class="status-pulse"></span> Hover or tap a node to inspect the system.</div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live System Dashboard -->
+        <section id="systems" class="systems section-padding">
+            <div class="container">
+                <div class="section-header section-header-split">
+                    <div>
+                        <span class="section-eyebrow"><span class="eyebrow-line"></span> Live System / 02</span>
+                        <h2 class="section-title">Currently building.</h2>
+                        <div class="section-underline"></div>
+                    </div>
+                    <p class="section-subtitle">A founder-maintained snapshot of the systems receiving attention now. Status labels are intentionally simple and honest.</p>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-panel card">
+                        <div class="dashboard-heading">
+                            <span class="eyebrow"><span class="status-pulse"></span> CURRENTLY BUILDING</span>
+                            <span class="system-code">AUG 2026</span>
+                        </div>
+                        <div class="system-list">
+                            <button class="system-row active" type="button" data-system-key="shield">
+                                <span class="system-row-icon shield"><img src="assets/vynalth-shield-mark.jpg" alt=""></span>
+                                <span class="system-row-copy"><strong>Vynalth AI Shield</strong><small>Behavioral trust and anti-bot infrastructure</small></span>
+                                <span class="system-status status-active"><i></i> Active</span>
+                            </button>
+                            <button class="system-row" type="button" data-system-key="navigator">
+                                <span class="system-row-icon"><i data-lucide="compass"></i></span>
+                                <span class="system-row-copy"><strong>Navigator</strong><small>Web agent experiments and assisted research</small></span>
+                                <span class="system-status status-developing"><i></i> Developing</span>
+                            </button>
+                            <button class="system-row" type="button" data-system-key="vynova">
+                                <span class="system-row-icon"><i data-lucide="heart-pulse"></i></span>
+                                <span class="system-row-copy"><strong>Vynova Health AI</strong><small>Health reflection and wellness tooling</small></span>
+                                <span class="system-status status-beta"><i></i> Beta</span>
+                            </button>
+                            <button class="system-row" type="button" data-system-key="pedia">
+                                <span class="system-row-icon"><i data-lucide="library"></i></span>
+                                <span class="system-row-copy"><strong>Pedia</strong><small>Structured knowledge layer for the ecosystem</small></span>
+                                <span class="system-status status-planned"><i></i> Planned</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-metrics">
+                        <div class="metric-card card"><span class="metric-label">PUBLIC REPOS</span><strong>16</strong><small>GitHub portfolio footprint</small></div>
+                        <div class="metric-card card"><span class="metric-label">MCE 2026</span><strong>#2</strong><small>Global · Gold B</small></div>
+                        <div class="metric-card card metric-card-wide"><span class="metric-label">CURRENT FOCUS</span><strong>AI INFRASTRUCTURE</strong><small>Health, trust, and useful systems</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Projects Section -->
         <section id="projects" class="projects section-padding">
             <div class="container">
@@ -233,8 +386,8 @@
                         <div class="project-glow-layer"></div>
                         <div class="project-content">
                             <div class="project-header">
-                                <div class="project-icon-box cyan">
-                                    <i data-lucide="activity"></i>
+                                <div class="project-icon-box cyan project-logo-box">
+                                    <img class="project-logo-mark" src="assets/vynalth-symbol.jpg" alt="" aria-hidden="true">
                                 </div>
                                 <span class="project-badge">Founder & Lead Dev</span>
                             </div>
@@ -262,8 +415,8 @@
                         <div class="project-glow-layer"></div>
                         <div class="project-content">
                             <div class="project-header">
-                                <div class="project-icon-box blue">
-                                    <i data-lucide="shield-check"></i>
+                                <div class="project-icon-box blue project-logo-box">
+                                    <img class="project-logo-mark shield-logo-mark" src="assets/vynalth-shield-mark.jpg" alt="" aria-hidden="true">
                                 </div>
                                 <span class="project-badge">AI-Native Security</span>
                             </div>
@@ -328,7 +481,7 @@
                             </div>
                             <h3 class="project-title">Smart Room IoT System</h3>
                             <p class="project-desc">
-                                A custom-built automated room environment controller. Interfaced temperature, humidity, and lighting sensors with microcontrollers to self-regulate energy consumption and match optimal sleep environmental metrics (supporting research for VitaMind).
+                                A custom-built automated room environment controller. Interfaced temperature, humidity, and lighting sensors with microcontrollers to self-regulate energy consumption and match optimal sleep environmental metrics (supporting research for Vynalth AI).
                             </p>
                             <div class="project-tech">
                                 <span>C++</span>
@@ -356,7 +509,7 @@
                             </div>
                             <h3 class="project-title">SomnoAI Digital Sleep Lab</h3>
                             <p class="project-desc">
-                                The original prototype launched in late 2025. Tested the initial hypothesis that Large Language Models could synthesize unstructured sleep reports and daily self-reports into reliable wellness recommendations. Later iterated into VitaMind AI.
+                                The original prototype launched in late 2025. Tested the initial hypothesis that Large Language Models could synthesize unstructured sleep reports and daily self-reports into reliable wellness recommendations. Later evolved into Vynalth AI, the current brand.
                             </p>
                             <div class="project-tech">
                                 <span>Gemini LLM</span>
@@ -366,12 +519,44 @@
                             </div>
                             <div class="project-links">
                                 <span class="project-link disabled">
-                                    <span>Iterated to VitaMind AI</span>
+                                    <span>Legacy → Vynalth AI</span>
                                 </span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Activity Feed -->
+        <section id="activity" class="activity section-padding">
+            <div class="container">
+                <div class="section-header section-header-split">
+                    <div>
+                        <span class="section-eyebrow"><span class="eyebrow-line"></span> Activity Feed / 03</span>
+                        <h2 class="section-title">Still in motion.</h2>
+                        <div class="section-underline"></div>
+                    </div>
+                    <p class="section-subtitle">A small, founder-maintained log of what is moving forward. No vanity metrics—just the latest signals.</p>
+                </div>
+                <div class="activity-feed">
+                    <article class="activity-entry card activity-entry-featured">
+                        <div class="activity-date"><span>26</span><small>AUG 2026</small></div>
+                        <div class="activity-entry-body"><span class="activity-type">BUILD / UI SYSTEM</span><h3>Shaping the Vyncus Lim personal brand system</h3><p>Refining a calm, premium interface with real brand marks, responsive motion, and a clearer story across the Vynalth ecosystem.</p></div>
+                        <span class="activity-arrow"><i data-lucide="arrow-up-right"></i></span>
+                    </article>
+                    <article class="activity-entry card">
+                        <div class="activity-date"><span>22</span><small>AUG 2026</small></div>
+                        <div class="activity-entry-body"><span class="activity-type">MILESTONE / MCE 2026</span><h3>Gold B · 86.25 points · global #2</h3><p>Celebrating SJK(C) Chung Hwa Pusat’s international choir result on 22 August 2026 and returning to the school community as an alumnus.</p></div>
+                        <span class="activity-arrow"><i data-lucide="trophy"></i></span>
+                    </article>
+                    <article class="activity-entry card">
+                        <div class="activity-date"><span>20</span><small>AUG 2026</small></div>
+                        <div class="activity-entry-body"><span class="activity-type">ECOSYSTEM / UPDATE</span><h3>Vynalth AI ecosystem in progress</h3><p>Continuing work across Vynalth AI, AI Shield, Navigator, Pedia, and Vynova Health AI with a focus on useful, human-centered systems.</p></div>
+                        <span class="activity-arrow"><i data-lucide="radio"></i></span>
+                    </article>
+                </div>
+                <p class="activity-note"><span class="status-pulse"></span> Owner-maintained · Last updated Aug 2026</p>
             </div>
         </section>
 
@@ -381,37 +566,125 @@
                 <div class="section-header text-center">
                     <h2 class="section-title">Timeline & Accomplishments</h2>
                     <div class="section-underline"></div>
-                    <p class="section-subtitle">Key positions, projects, and professional certifications I have earned along the way.</p>
+                    <p class="section-subtitle">Recent milestones, meaningful returns, and the systems I am building for what comes next.</p>
                 </div>
 
                 <div class="timeline">
-                    <!-- Item 1 -->
+                    <!-- August 2026 — Celebration Dinner -->
+                    <div class="timeline-item timeline-item-featured">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">AUG 2026 · CELEBRATION DINNER</div>
+                        <div class="timeline-content card">
+                            <div class="timeline-copy">
+                                <span class="timeline-kicker"><i data-lucide="sparkles"></i> Recent highlight</span>
+                                <h3 class="timeline-title">The perfect closing chapter</h3>
+                                <h4 class="timeline-subtitle">Malaysian Choral Eisteddfod · International Choir Festival 2026</h4>
+                                <p class="timeline-desc">
+                                    Celebrated the journey from preparation to the international stage with teachers, parents, teammates, and supporters. MCE 2026 is an international choir festival held in Kuala Lumpur on 22 August 2026. Vyncus Lim is pictured wearing white, celebrating with Coca-Cola and gratitude.
+                                </p>
+                            </div>
+                            <figure class="timeline-media timeline-media-wide">
+                                <img src="assets/mce-2026-celebration-dinner.jpg" alt="MCE 2026 celebration dinner; Vyncus Lim is pictured wearing white" loading="lazy">
+                                <figcaption>Celebration Dinner · Vyncus Lim wearing white</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- August 2026 — Competition result -->
+                    <div class="timeline-item timeline-item-featured">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">AUG 2026 · INTERNATIONAL COMPETITION</div>
+                        <div class="timeline-content card">
+                            <div class="timeline-copy">
+                                <span class="timeline-kicker"><i data-lucide="trophy"></i> MCE 2026 · CHOIR FESTIVAL</span>
+                                <h3 class="timeline-title">Gold B · 86.25 points · Global #2</h3>
+                                <h4 class="timeline-subtitle">Malaysian Choral Eisteddfod – International Choir Festival 2026</h4>
+                                <p class="timeline-desc">
+                                    The SJK(C) Chung Hwa Pusat children's choir represented the school in the Open Category of MCE 2026, an international choir festival held in Kuala Lumpur on 22 August 2026. Against 78 teams, the school earned Gold B with 86.25 points, placing first among Malaysian teams and second globally, behind Hong Kong. Vyncus Lim joined the homecoming and celebration as an alumnus and supporter.
+                                </p>
+                                <div class="achievement-stats" aria-label="MCE 2026 choir festival results">
+                                    <span><strong>Gold B</strong><small>86.25 points</small></span>
+                                    <span><strong>78</strong><small>Teams</small></span>
+                                    <span><strong>#2</strong><small>Global</small></span>
+                                </div>
+                            </div>
+                            <figure class="timeline-media timeline-media-wide">
+                                <img src="assets/mce-2026-gold-b-certificate.jpg" alt="MCE 2026 Gold B certificate and trophy" loading="lazy">
+                                <figcaption>Gold B · 86.25 points · Young Children Open</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- August 2026 — Homecoming -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-date">2026 - Present</div>
+                        <div class="timeline-date">AUG 2026 · HOMECOMING</div>
                         <div class="timeline-content card">
-                            <h3 class="timeline-title">Head of IT</h3>
+                            <div class="timeline-copy">
+                                <span class="timeline-kicker"><i data-lucide="users"></i> Back to the main campus</span>
+                                <h3 class="timeline-title">One year later, still part of the story</h3>
+                                <h4 class="timeline-subtitle">SJK(C) Chung Hwa Pusat · MCE 2026 Choir Team</h4>
+                                <p class="timeline-desc">
+                                    Returned to the primary-school campus a year later for a team photo and a moment of remembrance after the school choir’s international result. Even after moving on to POWIIS, the connection to the school and the people who supported the journey remains meaningful.
+                                </p>
+                            </div>
+                            <figure class="timeline-media">
+                                <img src="assets/mce-2026-team-homecoming.jpg" alt="MCE 2026 team group photo at the main campus" loading="lazy">
+                                <figcaption>Team homecoming · SJK(C) Chung Hwa Pusat</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- August 2026 — Alumni Sports Day -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">AUG 2026 · ALUMNI RETURN</div>
+                        <div class="timeline-content card">
+                            <div class="timeline-copy">
+                                <span class="timeline-kicker"><i data-lucide="medal"></i> Alumni achievement</span>
+                                <h3 class="timeline-title">Open Category Champion</h3>
+                                <h4 class="timeline-subtitle">SJC Chung Hwa Pusat / SJK(C) Chung Hwa Pusat Sports Day</h4>
+                                <p class="timeline-desc">
+                                    Returned to the familiar school field as an alumnus and won first place in the Open Category. In the award photo, Vyncus Lim is wearing black and standing on the No. 1 champion podium. A proud reminder that leaving primary school does not mean leaving its community behind: a part of Vyncus Lim never truly left.
+                                </p>
+                                <div class="achievement-stats achievement-stats-single"><span><strong>#1</strong><small>Open Category</small></span></div>
+                            </div>
+                            <figure class="timeline-media">
+                                <img src="assets/alumni-sports-day-champion.jpg" alt="Vyncus Lim wearing black and standing on the No. 1 champion podium at the alumni sports day" loading="lazy">
+                                <figcaption>Open Category · 1st place · Vyncus Lim in black</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- Current role -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2026 - PRESENT</div>
+                        <div class="timeline-content card">
+                            <span class="timeline-kicker"><i data-lucide="network"></i> Building in public</span>
+                            <h3 class="timeline-title">Head of IT / Secretary General</h3>
                             <h4 class="timeline-subtitle">POWIIS Model United Nations 2027</h4>
                             <p class="timeline-desc">
-                                Appointed as Head of IT to build, scale, and maintain the digital tools, registration portals, and security for the international student MUN conference in Penang, Malaysia.
+                                Building and maintaining the conference’s digital infrastructure, registration flows, committee tools, document routing, live alerts, and security systems in Penang, Malaysia.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Item 2 -->
+                    <!-- Founder role -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-date">2025 - Present</div>
+                        <div class="timeline-date">2025 - PRESENT</div>
                         <div class="timeline-content card">
+                            <span class="timeline-kicker"><i data-lucide="brain-circuit"></i> Founder journey</span>
                             <h3 class="timeline-title">Founder & Lead Developer</h3>
-                            <h4 class="timeline-subtitle">Vynalth AI (formerly SomnoAI Lab)</h4>
+                            <h4 class="timeline-subtitle">Vynalth AI <span class="legacy-label">formerly VitaMind AI / SomnoAI</span></h4>
                             <p class="timeline-desc">
-                                Spearheading the architecture and algorithm design for a privacy-oriented sleep analytics platform. Integrating generative AI models to provide bio-recovery insights from non-wearable data streams.
+                                Leading a privacy-oriented health AI platform that evolved from the original VitaMind AI / SomnoAI experiments into Vynalth AI, alongside the Vynalth AI Shield security system and Navigator web-agent work.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Item 3 -->
+                    <!-- Education -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">2025</div>
@@ -419,12 +692,11 @@
                             <h3 class="timeline-title">NASA ARSET Program Graduate</h3>
                             <h4 class="timeline-subtitle">Fundamentals of Remote Sensing</h4>
                             <p class="timeline-desc">
-                                Completed NASA's Applied Remote Sensing Training program course on the Fundamentals of Remote Sensing (certified on December 11, 2025), utilizing satellite observations for ecological and climate tracking.
+                                Completed NASA's Applied Remote Sensing Training program course on the Fundamentals of Remote Sensing, exploring satellite observations for ecological and climate tracking.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Item 4 -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">2025</div>
@@ -432,7 +704,7 @@
                             <h3 class="timeline-title">ITCILO AI Masterclass</h3>
                             <h4 class="timeline-subtitle">International Training Centre of the ILO</h4>
                             <p class="timeline-desc">
-                                Completed a masterclass on Artificial Intelligence, analyzing ethics, real-world utility, and system integration patterns for modern algorithmic systems.
+                                Completed a masterclass on Artificial Intelligence, exploring ethics, real-world utility, and system integration patterns for modern algorithmic systems.
                             </p>
                         </div>
                     </div>
@@ -593,13 +865,13 @@
                         </div>
 
                         <div class="social-links">
-                            <a href="#" aria-label="GitHub" class="social-link"><i data-lucide="github"></i></a>
-                            <a href="#" aria-label="LinkedIn" class="social-link"><i data-lucide="linkedin"></i></a>
+                            <a href="https://github.com/vyncuslim" target="_blank" rel="noreferrer" aria-label="GitHub" class="social-link"><i data-lucide="github"></i></a>
+                            <a href="https://www.linkedin.com/in/vyncus-lim/" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="social-link"><i data-lucide="linkedin"></i></a>
                             <a href="https://linktr.ee/vyncuslim" target="_blank" aria-label="Linktree" class="social-link"><i data-lucide="link-2"></i></a>
                             <a href="https://www.crunchbase.com/person/vyncus-lim" target="_blank" aria-label="Crunchbase" class="social-link"><i data-lucide="network"></i></a>
                             <a href="https://dev.to/vyncuslim" target="_blank" aria-label="DEV Community" class="social-link"><i data-lucide="code-2"></i></a>
                             <a href="https://hashnode.com/@vyncuslim" target="_blank" aria-label="Hashnode" class="social-link"><i data-lucide="book-open"></i></a>
-                            <a href="#" aria-label="Twitter" class="social-link"><i data-lucide="twitter"></i></a>
+                            <a href="https://twitter.com/vyncuslim" target="_blank" rel="noreferrer" aria-label="Twitter" class="social-link"><i data-lucide="twitter"></i></a>
                         </div>
                     </div>
 
@@ -649,7 +921,7 @@
                                 <i data-lucide="send"></i>
                             </button>
                         </form>
-                        <div id="formFeedback" class="form-feedback hidden"></div>
+                        <div id="formFeedback" class="form-feedback hidden" role="status" aria-live="polite"></div>
                     </div>
                 </div>
             </div>

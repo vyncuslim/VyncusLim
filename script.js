@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     // Add reveal class to various sections
     const revealTargets = [
-        '.hero-text', '.hero-graphic-container',
+        '.hero-text', '.hero-visual',
         '.about-info-panel', '.about-stats-panel',
         '.filter-controls', '.project-card',
         '.timeline-item', '.contact-info', '.contact-form-container',
@@ -215,7 +215,90 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transition = 'opacity 0.3s ease, transform 0.3s ease, background 0.4s ease';
     });
 
-    /* ==========================================================================
+    /* ========================================================================
+       INTERACTIVE ECOSYSTEM MAP & LIVE SYSTEM DASHBOARD
+       ========================================================================== */
+    const ecosystemData = {
+        vynalth: {
+            kicker: 'SELECTED SYSTEM / 01',
+            title: 'Vynalth AI',
+            description: 'A privacy-first health intelligence platform evolving from sleep analytics into a broader human-centered AI system.',
+            status: 'ACTIVE',
+            domain: 'Health AI'
+        },
+        shield: {
+            kicker: 'SELECTED SYSTEM / 02',
+            title: 'Vynalth AI Shield',
+            description: 'An AI-native trust layer exploring behavioral signals, human verification, and anti-bot infrastructure.',
+            status: 'ACTIVE',
+            domain: 'Trust infrastructure'
+        },
+        navigator: {
+            kicker: 'SELECTED SYSTEM / 03',
+            title: 'Navigator',
+            description: 'A developing web-agent direction for assisted research, navigation, and useful digital workflows.',
+            status: 'DEVELOPING',
+            domain: 'Web agents'
+        },
+        pedia: {
+            kicker: 'SELECTED SYSTEM / 04',
+            title: 'Pedia',
+            description: 'A planned knowledge layer for organizing context, references, and shared understanding across the ecosystem.',
+            status: 'PLANNED',
+            domain: 'Knowledge systems'
+        },
+        vynova: {
+            kicker: 'SELECTED SYSTEM / 05',
+            title: 'Vynova Health AI',
+            description: 'A beta health-AI direction focused on reflection, wellness tooling, and human-centered guidance.',
+            status: 'BETA',
+            domain: 'Health AI'
+        }
+    };
+
+    const ecosystemNodes = document.querySelectorAll('.ecosystem-node');
+    const ecosystemDetail = document.getElementById('ecosystemDetail');
+    const ecosystemDetailKicker = document.getElementById('ecosystemDetailKicker');
+    const ecosystemDetailTitle = document.getElementById('ecosystemDetailTitle');
+    const ecosystemDetailDescription = document.getElementById('ecosystemDetailDescription');
+    const ecosystemDetailStatus = document.getElementById('ecosystemDetailStatus');
+    const ecosystemDetailDomain = document.getElementById('ecosystemDetailDomain');
+
+    const selectEcosystem = (key) => {
+        const data = ecosystemData[key];
+        if (!data || !ecosystemDetail) return;
+
+        ecosystemNodes.forEach(node => {
+            const isActive = node.dataset.ecosystemKey === key;
+            node.classList.toggle('active', isActive);
+            node.setAttribute('aria-pressed', String(isActive));
+        });
+
+        ecosystemDetailKicker.textContent = data.kicker;
+        ecosystemDetailTitle.textContent = data.title;
+        ecosystemDetailDescription.textContent = data.description;
+        ecosystemDetailStatus.textContent = data.status;
+        ecosystemDetailDomain.textContent = data.domain;
+    };
+
+    ecosystemNodes.forEach(node => {
+        const key = node.dataset.ecosystemKey;
+        node.addEventListener('pointerenter', () => selectEcosystem(key));
+        node.addEventListener('focus', () => selectEcosystem(key));
+        node.addEventListener('click', () => selectEcosystem(key));
+    });
+    if (ecosystemNodes.length > 0) selectEcosystem('vynalth');
+
+    document.querySelectorAll('.system-row').forEach(row => {
+        row.addEventListener('click', () => {
+            document.querySelectorAll('.system-row').forEach(item => item.classList.remove('active'));
+            row.classList.add('active');
+            const key = row.dataset.systemKey;
+            if (ecosystemData[key]) selectEcosystem(key);
+        });
+    });
+
+    /* ========================================================================
        CONTACT FORM VALIDATION & FEEDBACK
        ========================================================================== */
     const contactForm = document.getElementById('contactForm');
@@ -433,6 +516,68 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
        DYNAMIC COPYRIGHT YEAR
        ========================================================================== */
+    /* ========================================================================
+       RESTRAINED MOTION SYSTEM
+       Mouse parallax and magnetic buttons only run on fine-pointer devices.
+       ========================================================================== */
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+    if (!motionQuery.matches && finePointerQuery.matches) {
+        const parallaxTargets = {
+            background: document.querySelectorAll('.glow-bg-orb'),
+            logo: document.querySelectorAll('.logo-symbol'),
+            visual: document.querySelectorAll('.hero-visual')
+        };
+        let pointerFrame = null;
+        let pointerX = window.innerWidth / 2;
+        let pointerY = window.innerHeight / 2;
+
+        const renderParallax = () => {
+            const normalizedX = (pointerX / window.innerWidth - 0.5) * 2;
+            const normalizedY = (pointerY / window.innerHeight - 0.5) * 2;
+
+            parallaxTargets.background.forEach((element, index) => {
+                const depth = 2 + index * 0.4;
+                element.style.setProperty('--parallax-x', `${normalizedX * depth}px`);
+                element.style.setProperty('--parallax-y', `${normalizedY * depth}px`);
+            });
+
+            parallaxTargets.logo.forEach(element => {
+                element.style.setProperty('--parallax-x', `${normalizedX * 4}px`);
+                element.style.setProperty('--parallax-y', `${normalizedY * 4}px`);
+            });
+
+            parallaxTargets.visual.forEach(element => {
+                element.style.setProperty('--parallax-x', `${normalizedX * 8}px`);
+                element.style.setProperty('--parallax-y', `${normalizedY * 8}px`);
+            });
+
+            pointerFrame = null;
+        };
+
+        window.addEventListener('pointermove', event => {
+            pointerX = event.clientX;
+            pointerY = event.clientY;
+            if (!pointerFrame) pointerFrame = requestAnimationFrame(renderParallax);
+        }, { passive: true });
+
+        document.querySelectorAll('.btn').forEach(button => {
+            button.classList.add('magnetic');
+            button.addEventListener('pointermove', event => {
+                const rect = button.getBoundingClientRect();
+                const offsetX = event.clientX - (rect.left + rect.width / 2);
+                const offsetY = event.clientY - (rect.top + rect.height / 2);
+                button.style.setProperty('--magnetic-x', `${offsetX * 0.22}px`);
+                button.style.setProperty('--magnetic-y', `${offsetY * 0.22}px`);
+            }, { passive: true });
+            button.addEventListener('pointerleave', () => {
+                button.style.setProperty('--magnetic-x', '0px');
+                button.style.setProperty('--magnetic-y', '0px');
+            });
+        });
+    }
+
     const currentYearEl = document.getElementById('currentYear');
     if (currentYearEl) {
         currentYearEl.textContent = new Date().getFullYear();
