@@ -18,8 +18,12 @@
       "source": "/",
       "headers": [
         {
+          "key": "Clear-Site-Data",
+          "value": "\"cache\""
+        },
+        {
           "key": "Link",
-          "value": "</assets/mce-2026-celebration-dinner.jpg>; rel=preload; as=image, </assets/mce-2026-gold-b-certificate.jpg>; rel=preload; as=image, </assets/mce-2026-team-homecoming.jpg>; rel=preload; as=image, </assets/alumni-sports-day-champion.jpg>; rel=preload; as=image"
+          "value": "</assets/mce-2026-celebration-dinner.jpg>; rel=preload; as=image"
         }
       ]
     },
