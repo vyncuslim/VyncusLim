@@ -10,7 +10,16 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</assets/mce-2026-celebration-dinner.jpg>; rel=preload; as=image, </assets/mce-2026-gold-b-certificate.jpg>; rel=preload; as=image, </assets/mce-2026-team-homecoming.jpg>; rel=preload; as=image, </assets/alumni-sports-day-champion.jpg>; rel=preload; as=image"
         }
       ]
     },
