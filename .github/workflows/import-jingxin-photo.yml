@@ -1,0 +1,38 @@
+name: Import Jing Xin photo
+
+on:
+  push:
+    paths:
+      - '.github/workflows/import-jingxin-photo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-photo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download original photo
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          curl --fail --location --retry 3 --retry-delay 2 \
+            'https://media.canva.com/v2/image-resize/format:JPG/height:200/quality:75/uri:ifs%3A%2F%2FM%2F341104d7-0b2a-49fa-8698-6b4c54eee3da/watermark:F/width:200?csig=AAAAAAAAAAAAAAAAAAAAADYLf8dUV5NMxj2rVBzq_dMaoVG0wMCQUIIbNDLm-6P8&exp=1789252167&osig=AAAAAAAAAAAAAAAAAAAAABLBqkeke339qzifLzQwl7t9ck4jcH791EncF1RNnScq&signer=media-rpc&x-canva-quality=thumbnail' \
+            -o assets/jingxin-memory.jpg
+          test -s assets/jingxin-memory.jpg
+          file assets/jingxin-memory.jpg
+
+      - name: Commit photo
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/jingxin-memory.jpg
+          git commit -m 'fix: add local Jing Xin photo asset'
+          git push
