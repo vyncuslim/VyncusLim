@@ -4,25 +4,51 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "vyncuslim.sleepsomno.com"
-        }
-      ],
-      "destination": "https://vyncuslim.com/:path*",
+      "source": "/about",
+      "has": [{ "type": "host", "value": "vyncuslim.sleepsomno.com" }],
+      "destination": "https://vyncuslim.com/story",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "has": [{ "type": "host", "value": "vyncuslim.vynalthai.com" }],
+      "destination": "https://vyncuslim.com/story",
+      "permanent": true
+    },
+    {
+      "source": "/certificates",
+      "has": [{ "type": "host", "value": "vyncuslim.sleepsomno.com" }],
+      "destination": "https://vyncuslim.com/achievements",
+      "permanent": true
+    },
+    {
+      "source": "/certificates",
+      "has": [{ "type": "host", "value": "vyncuslim.vynalthai.com" }],
+      "destination": "https://vyncuslim.com/achievements",
+      "permanent": true
+    },
+    {
+      "source": "/jingxin",
+      "has": [{ "type": "host", "value": "vyncuslim.sleepsomno.com" }],
+      "destination": "https://vynalthai.com/jingxin",
+      "permanent": true
+    },
+    {
+      "source": "/jingxin",
+      "has": [{ "type": "host", "value": "vyncuslim.vynalthai.com" }],
+      "destination": "https://vynalthai.com/jingxin",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "vyncuslim.vynalthai.com"
-        }
-      ],
-      "destination": "https://vyncuslim.com/:path*",
+      "has": [{ "type": "host", "value": "vyncuslim.sleepsomno.com" }],
+      "destination": "https://vyncuslim.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "vyncuslim.vynalthai.com" }],
+      "destination": "https://vyncuslim.com/",
       "permanent": true
     }
   ],
